@@ -3,6 +3,7 @@ import stringDirection from 'string-direction';
 
 import GenericContentExtractor from './content/extractor';
 import GenericTitleExtractor from './title/extractor';
+import GenericFaviconExtractor from './favicon/extractor';
 import GenericAuthorExtractor from './author/extractor';
 import GenericDatePublishedExtractor from './date-published/extractor';
 import GenericDekExtractor from './dek/extractor';
@@ -16,6 +17,7 @@ const GenericExtractor = {
   // This extractor is the default for all domains
   domain: '*',
   title: GenericTitleExtractor.extract,
+  favicon: GenericFaviconExtractor.extract,
   date_published: GenericDatePublishedExtractor.extract,
   author: GenericAuthorExtractor.extract,
   content: GenericContentExtractor.extract.bind(GenericContentExtractor),
@@ -36,6 +38,7 @@ const GenericExtractor = {
     }
 
     const title = this.title(options);
+    const favicon = this.favicon(options);
     const date_published = this.date_published(options);
     const author = this.author(options);
     const content = this.content({ ...options, title });
@@ -49,6 +52,7 @@ const GenericExtractor = {
 
     return {
       title,
+      favicon,
       author,
       date_published: date_published || null,
       dek,

@@ -222,6 +222,7 @@ const RootExtractor = {
       };
     }
     const title = extractResult({ ...opts, type: 'title' });
+    const favicon = extractResult({ ...opts, type: 'favicon' });
     const date_published = extractResult({ ...opts, type: 'date_published' });
     const author = extractResult({ ...opts, type: 'author' });
     const next_page_url = extractResult({ ...opts, type: 'next_page_url' });
@@ -252,6 +253,7 @@ const RootExtractor = {
 
     return {
       title,
+      favicon,
       content,
       author,
       date_published,
